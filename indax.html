@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simple Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #1f1f1f;
+    }
+
+    .top-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 40px;
+      gap: 40px;
+    }
+
+    .left-section {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      flex: 2;
+      padding: 20px;
+
+
+    }
+
+
+
+    .right-section {
+      flex: 1 1 100%;
+    }
+
+    @media (min-width: 768px) {
+      .right-section {
+        flex: 1;
+      }
+    }
+
+    .grouped-sections {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .grouped-sections {
+        flex-direction: row;
+      }
+    }
+
+    .section {
+      background: #f5f8ff;
+      padding: 20px 25px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.11);
+      flex: 1;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .section:hover {
+      transform: translateY(-5px);
+    }
+
+    .left-section > .section {
+      background: #fff5fd;
+    }
+
+    .left-section > .section:hover {
+      box-shadow: 0 6px 20px  rgba(0, 183, 255, 0.3);
+    }
+
+    .grouped-sections .section:nth-child(1) {
+      background: #e0f7ff;
+    }
+
+    .grouped-sections .section:nth-child(1):hover {
+      box-shadow: 0 6px 20px rgba(255, 85, 253, 0.3);
+    }
+
+    .grouped-sections .section:nth-child(2) {
+      background: #fff6ec;
+    }
+
+    .grouped-sections .section:nth-child(2):hover {
+      box-shadow: 0 6px 20px rgba(255, 166, 0, 0.3);
+    }
+
+    .grouped-sections .section:nth-child(3) {
+      background: #e8fdf2;
+    }
+
+    .grouped-sections .section:nth-child(3):hover {
+      box-shadow: 0 6px 20px rgba(40, 200, 100, 0.3);
+    }
+
+    .section h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #0a58ca;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between; /* আইকন ডান পাশে যাবে */
+      gap: 10px;
+    }
+
+    .section h2 i {
+      order: 2; /* আইকন ডান পাশে */
+      margin-left: 10px;
+      margin-right: 0;
+    }
+
+    .section h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 40px;
+      height: 2px;
+      border-radius: 2px;
+      /* default color */
+      background-color: #0a57ca91;
+    }
+
+    /* About Me section */
+    .left-section > .section {
+      background: #e0f7ff;
+    }
+    .left-section > .section h2 {
+      color: #0ea5e9;
+    }
+    .left-section > .section h2::after {
+      background-color: #0ea5e9;
+    }
+
+    /* Education section */
+    .grouped-sections .section:nth-child(1) {
+      background: #fff5fd;
+    }
+    .grouped-sections .section:nth-child(1) h2 {
+      color: #d946ef;
+    }
+    .grouped-sections .section:nth-child(1) h2::after {
+      background-color: #d946ef;
+    }
+
+    /* Interest Rate section */
+    .grouped-sections .section:nth-child(2) {
+      background: #fff6ec;
+    }
+    .grouped-sections .section:nth-child(2) h2 {
+      color: #f59e42;
+    }
+    .grouped-sections .section:nth-child(2) h2::after {
+      background-color: #f59e42;
+    }
+
+    /* Skills section */
+    .grouped-sections .section:nth-child(3) {
+      background: #e8fdf2;
+    }
+    .grouped-sections .section:nth-child(3) h2 {
+      color: #22c55e;
+    }
+    .grouped-sections .section:nth-child(3) h2::after {
+      background-color: #22c55e;
+    }
+
+    .section p {
+      margin-top: 10px;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    .right-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .profile-pic {
+      width: 300px;
+      height:300px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 6px solid #fff;
+      background-color: #e0f7ff;
+      box-shadow: 0 8px 32px rgba(0, 183, 255, 0.18), 0 2px 8px rgba(0,0,0,0.10);
+      transition: transform 0.4s cubic-bezier(.4,2,.6,1), box-shadow 0.4s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-pic:hover {
+      transform: scale(1.08) rotate(-2deg);
+      box-shadow: 0 16px 40px rgba(0, 183, 255, 0.28), 0 4px 16px rgba(0,0,0,0.13);
+      border-color: #0ea5e9;
+      background-color: #fff;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 18px;
+      font-size: 22px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      color: #0ea5e9;
+      background: #e0f7ff;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(14,165,233,0.08);
+      transition: 
+        background 0.3s,
+        color 0.3s,
+        box-shadow 0.3s,
+        transform 0.2s;
+      font-size: 22px;
+      border: 2px solid #fff;
+      position: relative;
+      text-decoration: none; /* এই লাইনটি যোগ করুন */
+    }
+
+    .social-icons a:hover {
+      background: #0ea5e9;
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(14,165,233,0.18);
+      transform: translateY(-4px) scale(1.12);
+      border-color: #0ea5e9;
+    }
+
+    .social-icons a:active {
+      transform: scale(0.98);
+    }
+
+    .social-icons a .fa-envelope { color: #d44638; }
+    .social-icons a .fa-linkedin { color: #0077b5; }
+    .social-icons a .fa-phone { color: #28a745; }
+    .social-icons a .fa-facebook { color: #1877f3; }
+    .social-icons a .fa-instagram { color: #e4405f; }
+
+    .social-icons a:hover .fa-envelope,
+    .social-icons a:hover .fa-linkedin,
+    .social-icons a:hover .fa-phone,
+    .social-icons a:hover .fa-facebook,
+    .social-icons a:hover .fa-instagram {
+      color: #fff;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 10px;
+      justify-content: left;
+    }
+
+    .skills img {
+      width: 40px;
+      height: 40px;
+      transition: transform 0.3s ease;
+    }
+
+    .skills img:hover {
+      transform: scale(1.1);
+    }
+
+    .social-icons h2::after {
+  display: none !important;
+  content: none !important;
+}
+
+
+/*mockuppppppppppppppppppppppppppppppppppppppp*/
+
+.mockup-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 30px;
+  justify-content: center;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.mockup-box {
+  flex: 1 1 calc(25% - 20px); /* 4 in a row on desktop */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+.mockup-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.mockup-text {
+  margin-top: 10px;
+  text-align: left;
+}
+
+.mockup-text h3 {
+  margin: 5px 0;
+  font-size: 18px;
+  color: #222;
+}
+
+.mockup-text p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Tablet and Mobile: 2 per row */
+@media (max-width: 768px) {
+  .mockup-box {
+    flex: 1 1 calc(50% - 20px);
+  }
+
+    .profile-pic {
+      width: 200px;
+      height:200px;
+    }
+
+}
+
+
+  </style>
+</head>
+<body>
+  <img src="./Creative-Portfolio.png" alt="Banner" class="top-image" />
+
+  <div class="container">
+    <div class="right-section">
+      <img src="./image.png" alt="My Photo" class="profile-pic" />
+      <div class="social-icons" id="socialIcons">
+        <a href="mailto:shihabrana.e@gmail.com" data-info="Email: shihabrana.e@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://linkedin.com/in/shihab6r" data-info="LinkedIn: @shihab6r" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="tel:01629659109" data-info="Phone: 01629659109" title="Phone"><i class="fas fa-phone"></i></a>
+        <a href="https://facebook.com/shihabrana6" data-info="Facebook: @shihabrana6" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://instagram.com/shihab6r" data-info="Instagram: @shihab6r" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <div class="social-info-box" id="socialInfoBox"></div>
+      </div>
+    </div>
+
+    <div class="left-section">
+      <div class="section">
+        <h2><i class="fas fa-user" style="color:#0ea5e9"></i> About Me</h2>
+        <p><strong>HI!</strong> Shihab Rana</p>
+        <p>I'm a creative graphic designer with a strong interest in software development. Currently learning programming to build modern digital solutions. Passionate about combining design and technology to solve real-world problems.</p>
+      </div>
+
+      <div class="grouped-sections">
+        <div class="section">
+          <h2><i class="fas fa-graduation-cap" style="color:#d946ef"></i> Education</h2>
+          <p>Bachelor in XYZ — ABC University (2020-2024)</p>
+        </div>
+
+        <div class="section">
+          <h2><i class="fas fa-chart-line" style="color:#f59e42"></i> Interest Rate</h2>
+          <p><i class="fas fa-paint-brush" style="color:#d946ef"></i> Designing – 90%<br>
+             <i class="fas fa-bullhorn" style="color:#f59e42"></i> Marketing – 70%<br>
+             <i class="fas fa-code" style="color:#22c55e"></i> Development – 60%</p>
+        </div>
+
+        <div class="section">
+          <h2><i class="fas fa-tools" style="color:#22c55e"></i> Skills</h2>
+          <div class="skills">
+            <img src="icons/01.png" alt="Photoshop" title="Photoshop" />
+            <img src="icons/02.png" alt="Illustrator" title="Illustrator" />
+            <img src="icons/03.png" alt="Canva" title="Canva" />
+            <img src="icons/04.png" alt="Figma" title="Figma" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img src="./Creative-Portfolio3.png" alt="Banner" class="top-image" />
+
+
+<div class="mockup-container">
+  <div class="mockup-box">
+    <img src="./image/image1.png" alt="Mockup 1">
+    <div class="mockup-text">
+      <h3>Mockup Title 1</h3>
+      <p>This is a description for mockup 1.</p>
+    </div>
+  </div>
+  <div class="mockup-box">
+    <img src="./image/image2.png" alt="Mockup 2">
+    <div class="mockup-text">
+      <h3>Mockup Title 2</h3>
+      <p>This is a description for mockup 2.</p>
+    </div>
+  </div>
+  <div class="mockup-box">
+    <img src="./image/image3.png" alt="Mockup 3">
+    <div class="mockup-text">
+      <h3>Mockup Title 3</h3>
+      <p>This is a description for mockup 3.</p>
+    </div>
+  </div>
+  <div class="mockup-box">
+    <img src="./image/image4.png" alt="Mockup 4">
+    <div class="mockup-text">
+      <h3>Mockup Title 4</h3>
+      <p>This is a description for mockup 4.</p>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>
