@@ -21,7 +21,23 @@
       color: #1f1f1f;
     }
 
-    .top-image {
+.top-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .top-image {
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+    /* Zoom effect */
+    transform: scale(1.18);
+  }
+}
+    .top-image2 {
       width: 100%;
       height: auto;
       display: block;
