@@ -62,6 +62,7 @@
     @media (max-width: 768px) {
       .container {
         padding: 50px 12px 12px 12px;
+        max-width: 100%;
       }
     }
 
@@ -418,27 +419,40 @@
   align-items: stretch;
 }
 
-.info-image {
+    .info-box2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 80%;
+  padding: 32px 0;
+  gap: 1px;
+  margin: auto;
+}
+
+.info-image,.info-image2 {
   flex: 1 1 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #222222;
+  
   border-top-left-radius: 18px;
   border-bottom-left-radius: 18px;
   min-width: 0;
   padding: 32px 0;
 }
+.info-image{
+background: #222222;
+}
 
-.info-image img {
-  max-width: 90%;
+.info-image img,.info-image2 img{
+  max-width: 70%;
   max-height: 340px;
 }
 
-.info-text {
+.info-text, .info-text2 {
   flex: 1 1 50%;
-  padding: 40px 36px 40px 36px;
-  background: #23272f;
+  padding: 40px 50px 40px 36px;
   border-top-right-radius: 18px;
   border-bottom-right-radius: 18px;
   display: flex;
@@ -447,7 +461,10 @@
   min-width: 0;
 }
 
-.info-text h2 {
+.info-text{
+background: #222222;
+}
+.info-text h2,.info-text2 h2 {
   margin-bottom: 12px;
   color: #0ea5e9;
   font-size: 26px;
@@ -455,14 +472,14 @@
   letter-spacing: 0.5px;
 }
 
-.info-text p {
+.info-text p,.info-text2 p {
   margin-bottom: 22px;
   color: #e5e7eb;
   line-height: 1.7;
   font-size: 17px;
 }
 
-.info-text ul {
+.info-text ul, .info-text2 u {
   list-style-type: disc;
   padding-left: 22px;
   color: #b6eaff;
@@ -480,26 +497,71 @@
     border-radius: 14px;
     padding: 0;
   }
+    .info-box2 {
+    flex-direction: row;   /* column এর বদলে row */
+    gap: 10px;
+    padding: 10px 0;
+
+  }
   .info-image,
-  .info-text {
+  .info-text,
+  .info-image2, .info-text2 {
     flex: 1 1 100%;
     border-radius: 0;
-    padding: 24px 10px;
+    padding: 24px 35px;
   }
-  .info-image img {
+  .info-image img, .info-image2 img {
     max-width: 98%;
     max-height: 220px;
   }
-  .info-text {
+  .info-text, .info-text2 {
     border-radius: 0 0 14px 14px;
-    padding: 28px 12px;
+    padding: 28px 35px;
+  }
+}
+
+.info-box2 img {
+  flex: 1 1 45%;
+  max-width: 100%;
+  min-width: 120px;
+  height: auto;
+
+  margin: 5px;
+ 
+  display: block;
+  object-fit: cover;
+}
+
+/* মোবাইলেও দুইটি ছবি পাশাপাশি, দুইটির বেশি হলে wrap */
+@media (max-width: 768px) {
+  .info-box2 {
+    gap: 10px;
+    padding: 10px 0;
+  }
+  .info-box2 img {
+    flex: 1 1 48%;
+    max-width: 48%;
+    min-width: 0;
+    margin: 6px 0;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-box2 {
+    flex-wrap: wrap;
+  }
+  .info-box2 img {
+    flex: 1 1 48%;
+    max-width: 48%;
+    min-width: 0;
   }
 }
   </style>
 </head>
 <body>
 
-  <img src="Creative-Portfolio.png" alt="Banner" class="top-image" />
+  <img src="./Creative-Portfolio.png" alt="Banner" class="top-image" />
 
   <div class="container">
     <div class="right-section">
@@ -603,8 +665,19 @@
   </div>
 </div>
 
+<div class="info-box2">
+  <img src="./image/dybweb8.png" alt="Brand Image 2">
+  <img src="./image/dybweb8.png" alt="Brand Image 2">
+  <img src="./image/dybweb4.png" alt="Brand Image 1">
+  <img src="./image/dybweb5.png" alt="Brand Image 2">
+
+  </div>  
+ <img src="./image/dybweb6.png" alt="Banner" class="top-image2" />
 
 
-  
+  <div class="info-box2">
+
+    <img src="./image/dybweb8.png" alt="Brand Image 2">
+  </div>  
 </body>
 </html>
